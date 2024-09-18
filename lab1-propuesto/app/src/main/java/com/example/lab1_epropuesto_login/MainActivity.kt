@@ -1,10 +1,12 @@
 package com.example.lab1_epropuesto_login
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.lab1_epropuesto_login.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
         // Botón para guardar los datos en un archivo de texto
+        val btnGuardar=binding.btnGuardar
         btnGuardar.setOnClickListener {
             saveDataToFile()
         }

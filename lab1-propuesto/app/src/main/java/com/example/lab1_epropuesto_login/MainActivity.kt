@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         btnGuardar.setOnClickListener {
             saveDataToFile()
         }
+        val btnMostrarDatos=binding.btnMostrarDatos
+        btnMostrarDatos.setOnClickListener {
+            showDataFromFile()
+        }
     }
     // Función para guardar los datos en un archivo de texto
     private fun saveDataToFile() {
@@ -53,6 +57,23 @@ class MainActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
             Toast.makeText(this, "Error al guardar los datos", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun showDataFromFile() {
+        val fileName = "asistentes.txt"
+        val file = File(filesDir, fileName)
+
+        if (file.exists()) {
+            try {
+                val data = file.readText()
+                Log.d("MainActivity", "Datos almacenados:\n$data")
+                Toast.makeText(this, "Datos mostrados en Logcat", Toast.LENGTH_SHORT).show()
+            } catch (e: IOException) {
+                e.printStackTrace()
+                Toast.makeText(this, "Error al leer los datos", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(this, "No hay datos almacenados", Toast.LENGTH_SHORT).show()
         }
     }
 }
